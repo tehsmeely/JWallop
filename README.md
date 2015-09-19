@@ -5,7 +5,7 @@ dependent on wallop JS and wallop CSS files as per normal wallop
 ###Class
 
 ```javascript
-JWallop (wallopID, [wallopOptions, usePaginationDots, onChangefunction]
+JWallop (wallopID, [wallopOptions, usePaginationDots, dotCurrentClass, onChangefunction]
 ```
 
 #Usage
@@ -38,5 +38,5 @@ var h2OnChange = function(event){
     console.log(selector);
 }
 
-wallop1 = new JWallop("wallop1", {}, true, h2OnChange);
+wallop1 = new JWallop("wallop1", {}, true, '', h2OnChange);
 ```
