@@ -1,21 +1,25 @@
-function JWallop(sectionID, options, onChangeFunc) {
+function JWallop(sectionID, options, useDots, onChangeFunc) {
+    //Defaults and self
     var self = this;
-    
     this.onChangeFunc = onChangeFunc || function() {};
+    this.useDots = (useDots === true) ? true : false
+    //useDots can be true or false - defaults to false
     
     this.wallop = new Wallop(document.getElementById(sectionID), options);
 
-    this.paginationDots = Array.prototype.slice.call(document.getElementById(sectionID).querySelectorAll('.Wallop-dot'));
-    console.log(this.paginationDots);
-    /*
-    Attach click listener on the dots efef
-    */
-    this.paginationDots.forEach(function(dotEl, index) {
-        dotEl.addEventListener('click', function() {
-            self.wallop.goTo(index);
+    if (this.useDots){
+        //Get dots
+        this.paginationDots = Array.prototype.slice.call(document.getElementById(sectionID).querySelectorAll('.Wallop-dot'));
+        console.log(this.paginationDots);
+        /*
+        Attach click listener on the dots
+        */
+        this.paginationDots.forEach(function(dotEl, index) {
+            dotEl.addEventListener('click', function() {
+                self.wallop.goTo(index);
+            });
         });
-    });
-
+    }
     /*
     Listen to wallop change and update classes
     */
@@ -26,11 +30,11 @@ function JWallop(sectionID, options, onChangeFunc) {
         self.onChangeFunc();
 
         //$('.Wallop-dot--current', $(event.detail.wallopEl)).removeClass("Wallop-dot--current");
-        self.removeClass(document.getElementById(sectionID).querySelector('.Wallop-dot--current'),
-            'Wallop-dot--current');
-
-        self.addClass(self.paginationDots[event.detail.currentItemIndex], 'Wallop-dot--current');
-
+        if (self.useDots){
+            self.removeClass(document.getElementById(sectionID).querySelector('.Wallop-dot--current'),
+                'Wallop-dot--current');
+            self.addClass(self.paginationDots[event.detail.currentItemIndex], 'Wallop-dot--current');
+        }
     });
 
     //helper classes
