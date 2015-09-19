@@ -52,4 +52,4 @@ function JWallop(sectionID, options, useDots, dotCurrentClass, onChangeFunc) {
         }
         element.className = element.className.replace(className, '');
     }
-
+}
