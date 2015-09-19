@@ -3,7 +3,7 @@ function JWallop(sectionID, options, useDots, dotCurrentClass, onChangeFunc) {
     var self = this;
     this.onChangeFunc = onChangeFunc || function() {};
     this.useDots = (useDots === true) ? true : false;
-    this.dotCurrentClass = (typeof dotCurrentClass === undefined) ? "" : dotCurrentClass;
+    this.dotCurrentClass = (typeof(dotCurrentClass)===undefined) ? "" : dotCurrentClass;
     //useDots can be true or false - defaults to false
     
     this.wallop = new Wallop(document.getElementById(sectionID), options);
@@ -52,4 +52,4 @@ function JWallop(sectionID, options, useDots, dotCurrentClass, onChangeFunc) {
         }
         element.className = element.className.replace(className, '');
     }
-}
+
