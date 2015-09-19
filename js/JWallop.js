@@ -27,7 +27,7 @@ function JWallop(sectionID, options, useDots, onChangeFunc) {
         //var sectionID = $(event.detail.wallopEl).attr("id");
         sectionID = event.detail.wallopEl.getAttribute("id");
         console.log("on change sectionID: " + sectionID);
-        self.onChangeFunc();
+        self.onChangeFunc(event);
 
         //$('.Wallop-dot--current', $(event.detail.wallopEl)).removeClass("Wallop-dot--current");
         if (self.useDots){
