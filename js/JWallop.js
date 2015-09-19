@@ -1,9 +1,8 @@
-function JWallop(sectionID, options) {
+function JWallop(sectionID, options, onChangeFunc) {
     var self = this;
-    //console.log(sectionID);
-    //var wallopEl = document.getElementById(sectionID);
-    //var wallopEl = $(sectionID);//[0];
-    //console.log(wallopEl);
+    
+    this.onChangeFunc = onChangeFunc || function() {};
+    
     this.wallop = new Wallop(document.getElementById(sectionID), options);
 
     this.paginationDots = Array.prototype.slice.call(document.getElementById(sectionID).querySelectorAll('.Wallop-dot'));
@@ -24,6 +23,7 @@ function JWallop(sectionID, options) {
         //var sectionID = $(event.detail.wallopEl).attr("id");
         sectionID = event.detail.wallopEl.getAttribute("id");
         console.log("on change sectionID: " + sectionID);
+        self.onChangeFunc();
 
         //$('.Wallop-dot--current', $(event.detail.wallopEl)).removeClass("Wallop-dot--current");
         self.removeClass(document.getElementById(sectionID).querySelector('.Wallop-dot--current'),
